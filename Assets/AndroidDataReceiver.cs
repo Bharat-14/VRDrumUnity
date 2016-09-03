@@ -32,13 +32,16 @@ public class AndroidDataReceiver : MonoBehaviour {
 		//textDisplay.text = x.ToString ();
 		Vector3 acc = new Vector3(x,y,z);
 
-		cubeRight.transform.position =  Vector3.Lerp(cubeRight.transform.position, acc, Time.deltaTime );
-
+//		cubeRight.transform.position =  Vector3.Lerp(cubeRight.transform.position, acc, Time.deltaTime );
 		Vector3 forward = new Vector3 (acc.x, acc.y, acc.z);
 		//cube.transform.rotation = Quaternion.LookRotation (forward);
-		Quaternion q = new Quaternion(acc.x, acc.y, acc.z, 1.0f);
+		cubeRight.GetComponent<Rigidbody>().AddRelativeForce(acc,ForceMode.Acceleration);
+			
+//		Quaternion q = new Quaternion(acc.x, acc.y, acc.z, 1.0f);
 
-		cubeRight.transform.rotation = Quaternion.Lerp(cubeRight.transform.rotation, q	, Time.deltaTime);
+//		cubeRight.transform.rotation = Quaternion.Lerp(cubeRight.transform.rotation, q	, Time.deltaTime);
+
+
 	}
 
 //	void WearOrientationChangedLeft(string value){
