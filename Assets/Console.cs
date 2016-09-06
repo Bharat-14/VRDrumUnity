@@ -16,12 +16,12 @@ public class Console : MonoBehaviour
 	/// <summary>
 	/// The hotkey to show and hide the console window.
 	/// </summary>
-	public KeyCode toggleKey = KeyCode.BackQuote;
+	public KeyCode toggleKey = KeyCode.Escape;
 
 	List<Log> logs = new List<Log>();
 	Vector2 scrollPosition;
 	bool show;
-	bool collapse;
+	bool collapse = true;
 
 	// Visual elements:
 
