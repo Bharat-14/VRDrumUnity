@@ -17,10 +17,12 @@ public class SoundManager : MonoBehaviour {
 //		print ("Test");
 //
 //		if (collision.relativeVelocity.magnitude > 2)
-//			audio.Play();
+////			audio.Play();
+//			coll.GetComponent<AudioSource> ().Play ();
+//		
 //
 //	}
-
+//
 
 	void OnTriggerEnter(Collider other) {
 		print ("Test Trigger" + other);
