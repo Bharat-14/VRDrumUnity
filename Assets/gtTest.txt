@@ -1,12 +1,6 @@
 this is a test file for git rebase
 
-
-
-
-
-
-
-
+hello
 
 
 
@@ -18,3 +12,6 @@ this is a test file for git rebase
 
 
 he
+second rebase
+
+dkhdkjhdkhdkjh
