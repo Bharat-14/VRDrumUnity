@@ -42,6 +42,7 @@ public class AndroidDataReceiver : MonoBehaviour {
 		GameObject td = (GameObject)Instantiate(textDisplay.gameObject, cubeR.transform.position,rot );
 		textDisplay.text = cubeR.transform.position.ToString ();
 		StartCoroutine (ShowCoordinate());
+		print ("Show coordinate");
 	}
 
 
