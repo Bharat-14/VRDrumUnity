@@ -7,9 +7,10 @@ public class AndroidDataReceiver : MonoBehaviour {
 //	public GameObject cubeLeft;
 	public GameObject cubeRight;
 	// Use this for initialization
+	public float displayInterval = 1.0f;
 
 
-	public float wearRoll = float.NaN;
+	private float wearRoll = float.NaN;
 	private float wearPitch = float.NaN;
 	private float wearAzimuth = float.NaN;
 
@@ -22,19 +23,26 @@ public class AndroidDataReceiver : MonoBehaviour {
 	}
 
 	void Start () {
-	
+		StartCoroutine (ShowCoordinate ());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-//		Debug.Log ("ToRotation" + _toRotation);
 
-//		transform.rotation = Quaternion.Lerp (transform.rotation, _toRotation, Time.deltaTime * 10);
-		cubeRight.transform.rotation = Quaternion.Lerp (cubeRight.transform.rotation, _toRotation, Time.deltaTime * 10f);
+		cubeRight.transform.rotation = Quaternion.Slerp (cubeRight.transform.rotation, _toRotation, Time.deltaTime * 5f);
+
+		print ("Delta Time : " + Time.deltaTime.ToString() + "     Delta Rotation [X:" + (cubeRight.transform.rotation.x - _toRotation.x).ToString() + " Y:" + (cubeRight.transform.rotation.y - _toRotation.y).ToString() +" Z:"+ (cubeRight.transform.rotation.z - _toRotation.z).ToString() +"]");
 
 	}
 
-
+	IEnumerator ShowCoordinate(){
+		yield return new WaitForSeconds(displayInterval);
+		Transform cubeR = cubeRight.transform.GetChild (0);
+		Quaternion rot = Quaternion.Euler (52.8f, 0, 0);
+		GameObject td = (GameObject)Instantiate(textDisplay.gameObject, cubeR.transform.position,rot );
+		textDisplay.text = cubeR.transform.position.ToString ();
+		StartCoroutine (ShowCoordinate());
+	}
 
 
 	void WearOrientationChanged(string value){
