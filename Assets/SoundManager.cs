@@ -7,7 +7,11 @@ public class SoundManager : MonoBehaviour {
 //	AudioSource audio3;
 //	AudioSource audio4;
 //	public AudioClip clip;
+	public Rigidbody rb;
 	// Use this for initialization
+
+	public  Vector3 previous;
+	public  float velocity;
 	void Start () {
 		
 	}
@@ -22,11 +26,22 @@ public class SoundManager : MonoBehaviour {
 //		
 //
 //	}
+
+	void Update(){
+		velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+		previous = transform.position;
+
+	}
 //
 
 	void OnTriggerEnter(Collider other) {
-		print ("Test Trigger" + other);
-		other.GetComponent<AudioSource> ().Play ();
+		
+		print ("Velocity " + velocity );
+//		print ("Other Velocity" + other.GetComponent<Rigidbody>().velocity+ "   "+ other.GetComponent<Rigidbody>().angularVelocity  );
+
+		AudioSource adSource = other.GetComponent<AudioSource> ();
+		adSource.volume = velocity / 35f;
+		adSource.Play ();
 
 
 

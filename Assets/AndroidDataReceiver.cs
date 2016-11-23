@@ -31,7 +31,7 @@ public class AndroidDataReceiver : MonoBehaviour {
 
 		cubeRight.transform.rotation = Quaternion.Slerp (cubeRight.transform.rotation, _toRotation, Time.deltaTime * 5f);
 
-		print ("Delta Time : " + Time.deltaTime.ToString() + "     Delta Rotation [X:" + (cubeRight.transform.rotation.x - _toRotation.x).ToString() + " Y:" + (cubeRight.transform.rotation.y - _toRotation.y).ToString() +" Z:"+ (cubeRight.transform.rotation.z - _toRotation.z).ToString() +"]");
+//		print ("Delta Time : " + Time.deltaTime.ToString() + "     Delta Rotation [X:" + (cubeRight.transform.rotation.x - _toRotation.x).ToString() + " Y:" + (cubeRight.transform.rotation.y - _toRotation.y).ToString() +" Z:"+ (cubeRight.transform.rotation.z - _toRotation.z).ToString() +"]");
 
 	}
 
@@ -40,9 +40,10 @@ public class AndroidDataReceiver : MonoBehaviour {
 		Transform cubeR = cubeRight.transform.GetChild (0);
 		Quaternion rot = Quaternion.Euler (52.8f, 0, 0);
 		GameObject td = (GameObject)Instantiate(textDisplay.gameObject, cubeR.transform.position,rot );
-		textDisplay.text = cubeR.transform.position.ToString ();
+//		textDisplay.text = cubeR.transform.position.ToString ();
+		textDisplay.text =  _toRotation.ToString();
 		StartCoroutine (ShowCoordinate());
-		print ("Show coordinate");
+//		print ("Show coordinate");
 	}
 
 
@@ -69,7 +70,7 @@ public class AndroidDataReceiver : MonoBehaviour {
 //		Debug.Log ("wearRoll " + wearRoll);
 
 		_toRotation = Quaternion.Euler (wearPitch, wearRoll, wearAzimuth);
-		Debug.Log ("ToRotation" + _toRotation);
+//		Debug.Log ("ToRotation" + _toRotation);
 
 
 	}
