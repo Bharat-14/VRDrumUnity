@@ -12,6 +12,8 @@ public class SoundManager : MonoBehaviour {
 
 	public  Vector3 previous;
 	public  float velocity;
+	public  float velocityY;
+
 	void Start () {
 		
 	}
@@ -29,6 +31,8 @@ public class SoundManager : MonoBehaviour {
 
 	void Update(){
 		velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+		velocityY = ((transform.position.y - previous.y)) / Time.deltaTime;
+
 		previous = transform.position;
 
 	}
@@ -36,7 +40,7 @@ public class SoundManager : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		
-		print ("Velocity " + velocity );
+		print ("VelocityY " + velocityY );
 //		print ("Other Velocity" + other.GetComponent<Rigidbody>().velocity+ "   "+ other.GetComponent<Rigidbody>().angularVelocity  );
 
 		AudioSource adSource = other.GetComponent<AudioSource> ();

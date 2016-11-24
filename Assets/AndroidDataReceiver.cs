@@ -41,7 +41,7 @@ public class AndroidDataReceiver : MonoBehaviour {
 		Quaternion rot = Quaternion.Euler (52.8f, 0, 0);
 		GameObject td = (GameObject)Instantiate(textDisplay.gameObject, cubeR.transform.position,rot );
 //		textDisplay.text = cubeR.transform.position.ToString ();
-		textDisplay.text =  _toRotation.ToString();
+		textDisplay.text =  cubeR.position.ToString();
 		StartCoroutine (ShowCoordinate());
 //		print ("Show coordinate");
 	}
